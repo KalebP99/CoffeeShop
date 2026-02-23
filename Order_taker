@@ -36,6 +36,9 @@ def order_extras():
             print("Please specify the extra you'd like to add.")
             
             break
+        if extra.lower() == 'no':
+            print("No extras added to your order.")
+            break
         else:
             extras.append(extra)
             print(f"{extra} added to your order.")
