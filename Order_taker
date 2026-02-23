@@ -1,0 +1,63 @@
+# Coffee Shop Ordering System
+coffee_shop_menu = {
+    "Espresso": 2.50,
+    "Cappuccino": 3.00,
+    "Latte": 3.50,
+    "Mocha": 4.00,
+}
+
+#Display Coffee Shop Menu
+def display_menu(menu):
+    print("Welcome to the Coffee Shop!")
+    print("Here's our menu:")
+    for item, price in menu.items():
+        print(f"{item}: ${price:.2f}")
+
+#Take Customer Order
+def take_order(menu):
+    order = []
+    while True:
+        choice = input("Please enter the name of the coffee you'd like to order (or 'done' to finish): ")
+        if choice.lower() == 'done':
+            break
+        elif choice in menu:
+            order.append(choice)
+            print(f"{choice} added to your order.")
+        else:
+            print("Sorry, we don't have that item. Please choose from the menu.")
+    return order
+
+#Handle Extras
+def order_extras():
+    extras = []
+    while True:
+        extra = input("Would you like to add any extras (e.g., milk, sugar, flavor)?") 
+        if extra.lower() == 'yes':
+            print("Please specify the extra you'd like to add.")
+            
+            break
+        else:
+            extras.append(extra)
+            print(f"{extra} added to your order.")
+    return extras
+
+#Calculate Total Cost
+def calculate_total(order, menu): 
+    total = sum(menu[item] for item in order) + sum(0.50 for _ in order)  # Assuming each coffee has a $0.50 extra charge for extras
+    return total
+
+#Main Function
+def main():
+    display_menu(coffee_shop_menu)
+    order = take_order(coffee_shop_menu)
+    if order:
+        extras = order_extras()
+        total = calculate_total(order, coffee_shop_menu)
+        print(f"Your order: {', '.join(order)} with extras: {', '.join(extras)}")
+        print(f"Total: ${total:.2f}")
+    else:
+        print("No items ordered. Thank you for visiting!")
+
+#Run the Coffee Shop Ordering System
+if __name__ == "__main__":
+    main()
