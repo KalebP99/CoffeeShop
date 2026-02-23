@@ -18,7 +18,7 @@ def take_order(menu):
     order = []
     while True:
         choice = input("Please enter the name of the coffee you'd like to order (or 'done' to finish): ")
-        if choice.lower() == 'done':
+        if choice.strip().lower() == 'done':
             break
         elif choice in menu:
             order.append(choice)
@@ -32,11 +32,11 @@ def order_extras():
     extras = []
     while True:
         extra = input("Would you like to add any extras (e.g., milk, sugar, flavor)?") 
-        if extra.lower() == 'yes':
+        if extra.strip().lower() == 'yes':
             print("Please specify the extra you'd like to add.")
             
             break
-        if extra.lower() == 'no':
+        if extra.strip().lower() == 'no':
             print("No extras added to your order.")
             break
         else:
