@@ -11,18 +11,18 @@ def display_menu(menu):
     print("Welcome to the Coffee Shop!")
     print("Here's our menu:")
     for item, price in menu.items():
-        print(f"{item}: ${price:.2f}")
+        print(f"{item.title()}: ${price:.2f}")
 
 #Take Customer Order
 def take_order(menu):
     order = []
     while True:
-        choice = input("Please enter the name of the coffee you'd like to order (or 'done' to finish): ")
-        if choice.strip().lower() == 'done':
+        choice = input("Please enter the name of the coffee you'd like to order (or 'done' to finish): ").strip().lower()
+        if choice == 'done':
             break
         elif choice in menu:
             order.append(choice)
-            print(f"{choice} added to your order.")
+            print(f"{choice.title()} added to your order.")
         else:
             print("Sorry, we don't have that item. Please choose from the menu.")
     return order
